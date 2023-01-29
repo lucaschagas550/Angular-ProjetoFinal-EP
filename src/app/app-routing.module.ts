@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './navegacao/home/home.component';
+import { NotFoundComponent } from './navegacao/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,21 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+  },
+  {//Carregar modulo filho com lazyload
+    path: 'conta',
+    loadChildren: () => import('./conta/conta.module')
+      .then(module => module.ContaModule)
+  },
+
+
+  {//Rota exclusiva
+    path: 'nao-encontrado',
+    component: NotFoundComponent
+  },
+  {// Em caso de Erro 404 chama este component, sempre deixar por ultimo para nao ser chamado por engano
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 
