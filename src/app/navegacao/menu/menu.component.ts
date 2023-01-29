@@ -5,5 +5,11 @@ import { Component } from '@angular/core';
   templateUrl: './menu.component.html'
 })
 export class MenuComponent {
+  //https://ng-bootstrap.github.io/#/getting-started
+  public isCollapsed!: boolean;
 
+  constructor() {
+    this.isCollapsed = true;
+
+  }
 }
