@@ -73,8 +73,20 @@ export class CadastroComponent implements OnInit, AfterViewInit {
       //mapeando os valores para um objeto do tipo usuario com valores do formulario
       this.usuario = Object.assign({}, this.usuario, this.cadastroForm.value);
 
-      this.contaService.registrarUsuario(this.usuario);
+      this.contaService.registrarUsuario(this.usuario)
+        .subscribe({
+          next: (sucesso) => { this.processarSucesso(sucesso) },
+          error: (falha) => { this.processarFalha(falha) },
+        });
     }
+  }
+
+  processarSucesso(response: any) {
 
   }
+
+  processarFalha(fail: any) {
+
+  }
+
 }
