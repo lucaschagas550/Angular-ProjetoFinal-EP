@@ -3,6 +3,7 @@ import { Usuario } from './../models/usuario';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
 import { FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { ContaService } from '../services/conta.service';
+import { Router } from '@angular/router';
 
 import { CustomValidators } from '@narik/custom-validators';
 import { fromEvent, merge, Observable } from 'rxjs';
@@ -26,7 +27,8 @@ export class CadastroComponent implements OnInit, AfterViewInit {
 
   constructor(
     private fb: FormBuilder,
-    private contaService: ContaService) {
+    private contaService: ContaService,
+    private router: Router,) {
 
     this.validationMessages = {
       email: {
@@ -82,11 +84,17 @@ export class CadastroComponent implements OnInit, AfterViewInit {
   }
 
   processarSucesso(response: any) {
+    this.cadastroForm.reset();
+    this.errors = [];
 
+    this.contaService.LocalStorage.salvarDadosLocaisUsuario(response);
+
+    this.router.navigate(['/home']);
   }
 
   processarFalha(fail: any) {
-
+    console.log(fail);
+    this.errors = fail.error?.errors;
   }
 
 }
