@@ -11,6 +11,7 @@ export class ContaService extends BaseService {
     constructor(private http: HttpClient) { super(); }
 
     registrarUsuario(usuario: Usuario): Observable<Object> {
+        console.log(this.UrlServiceV1);
         let response = this.http
             .post(this.UrlServiceV1 + 'nova-conta', usuario, {
                 headers: this.ObterHeaderJson().headers,

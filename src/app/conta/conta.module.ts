@@ -23,7 +23,7 @@ import { NarikCustomValidatorsModule } from '@narik/custom-validators';
   imports: [
     CommonModule,
     RouterModule, // para roteamento
-    ContaRoutingModule,
+    ContaRoutingModule, // configuracao de roteamento do modulo
     FormsModule, // Para cadastro de formulario
     ReactiveFormsModule, // Para cadastro de formulario reativos
     HttpClientModule, // Para comunicacao com backend via HTTP
