@@ -1,12 +1,15 @@
-import { ValidationMessages, GenericValidator, DisplayMessage } from './../../utils/generic-form-validation';
-import { Usuario } from './../models/usuario';
+import { CustomValidators } from '@narik/custom-validators';
+import { ToastrService } from 'ngx-toastr';
+
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
 import { FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
-import { ContaService } from '../services/conta.service';
 import { Router } from '@angular/router';
 
-import { CustomValidators } from '@narik/custom-validators';
 import { fromEvent, merge, Observable } from 'rxjs';
+
+import { Usuario } from './../models/usuario';
+import { ContaService } from '../services/conta.service';
+import { ValidationMessages, GenericValidator, DisplayMessage } from './../../utils/generic-form-validation';
 
 @Component({
   selector: 'app-cadastro',
@@ -28,7 +31,8 @@ export class CadastroComponent implements OnInit, AfterViewInit {
   constructor(
     private fb: FormBuilder,
     private contaService: ContaService,
-    private router: Router,) {
+    private router: Router,
+    private toastr: ToastrService,) {
 
     this.validationMessages = {
       email: {
@@ -88,13 +92,26 @@ export class CadastroComponent implements OnInit, AfterViewInit {
     this.errors = [];
 
     this.contaService.LocalStorage.salvarDadosLocaisUsuario(response);
+    let toast = this.toastr.success('Registro realizado com Sucesso!', 'Bem vindo!!!',
+      {
+        progressBar: true,
+      });
 
-    this.router.navigate(['/home']);
+    if (toast) {
+      toast.onHidden.subscribe(() => {
+        this.router.navigate(['/home']);
+      })
+    }
   }
 
   processarFalha(fail: any) {
     console.log(fail);
     this.errors = fail.error?.errors;
+
+    this.toastr.error('Ocorreu um erro!', 'Opa :(',
+      {
+        progressBar: true,
+      });
   }
 
 }
