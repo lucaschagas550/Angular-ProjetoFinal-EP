@@ -28,6 +28,8 @@ export class CadastroComponent implements OnInit, AfterViewInit {
   genericValidator!: GenericValidator;
   displayMessage: DisplayMessage = {};
 
+  mudancasNaoSalvas!: boolean;
+
   constructor(
     private fb: FormBuilder,
     private contaService: ContaService,
@@ -71,6 +73,7 @@ export class CadastroComponent implements OnInit, AfterViewInit {
 
     merge(...controlBlurs).subscribe(() => {//para cada evento(controlBlurs) sera processado uma mensagem
       this.displayMessage = this.genericValidator.processarMensagens(this.cadastroForm);
+      this.mudancasNaoSalvas = true; //Utilizado no conta.guard para avisar o usuario que ira perder os dados da alteracao ao sair da tela
     });
   }
 
@@ -84,6 +87,8 @@ export class CadastroComponent implements OnInit, AfterViewInit {
           next: (sucesso) => { this.processarSucesso(sucesso) },
           error: (falha) => { this.processarFalha(falha) },
         });
+
+      this.mudancasNaoSalvas = false;
     }
   }
 
@@ -97,6 +102,7 @@ export class CadastroComponent implements OnInit, AfterViewInit {
         progressBar: true,
       });
 
+    this.mudancasNaoSalvas = false;
     if (toast) {
       toast.onHidden.subscribe(() => {
         this.router.navigate(['/home']);

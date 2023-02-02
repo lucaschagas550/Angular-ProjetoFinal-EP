@@ -1,3 +1,4 @@
+import { ContaGuard } from './services/conta.guard';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -31,6 +32,7 @@ import { NarikCustomValidatorsModule } from '@narik/custom-validators';
   ],
   providers: [
     ContaService,
+    ContaGuard, //Guarda de rota
   ]
 })
 export class ContaModule { }
