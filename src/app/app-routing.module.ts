@@ -18,6 +18,11 @@ const routes: Routes = [
     loadChildren: () => import('./conta/conta.module')
       .then(module => module.ContaModule)
   },
+  {
+    path: 'fornecedores',
+    loadChildren: () => import('./fornecedor/fornecedor.module')
+      .then(m => m.FornecedorModule)
+  },
 
 
   {//Rota exclusiva

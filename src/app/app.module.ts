@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavegacaoModule } from './navegacao/navegacao.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NavegacaoModule } from './navegacao/navegacao.module';
     NavegacaoModule,
     NgbModule, // Bootstrap para angular
     BrowserAnimationsModule, // modulo de animacao utilizado pelo Toastr
-    ToastrModule.forRoot() // Toastr exibe mensagem ao usuario na tela, pela aplicacao toda por isso esta sendo resolvido neste modulo
+    ToastrModule.forRoot(), // Toastr exibe mensagem ao usuario na tela, pela aplicacao toda por isso esta sendo resolvido neste modulo
+    HttpClientModule, //modulo para utilzar requisicao http
   ],
   providers: [],
   bootstrap: [AppComponent]
