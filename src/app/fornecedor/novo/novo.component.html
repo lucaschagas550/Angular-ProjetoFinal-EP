@@ -43,7 +43,11 @@
               placeholder="{{ textoDocumento }}"
               formControlName="documento"
               [ngClass]="{ 'is-invalid': displayMessage['documento'] }"
-              mask="000.000.000-99"
+              [mask]="
+                tipoFornecedorForm()?.value === '1'
+                  ? '000.000.000-00'
+                  : '00.000.000/0000-00'
+              "
             />
 
             <span class="text-danger" *ngIf="displayMessage['documento']">
@@ -103,6 +107,7 @@
                 formControlName="cep"
                 cep
                 [ngClass]="{ 'is-invalid': displayMessage['cep'] }"
+                mask="00000-000"
               />
               <span class="text-danger" *ngIf="displayMessage['cep']">
                 <p [innerHTML]="displayMessage['cep']"></p>

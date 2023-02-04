@@ -91,7 +91,7 @@ export class NovoComponent extends FormBaseComponent implements OnInit {
 
   ngAfterViewInit(): void {
 
-    this.tipoFornecedorForm()?.valueChanges
+    this.tipoFornecedorForm()?.valueChanges //evendo quando tipo de fornecedor mudar troque a validacao
       .subscribe(() => {
         this.trocarValidacaoDocumento();
         super.configurarValidacaoFormularioBase(this.formInputElements, this.fornecedorForm)
@@ -103,9 +103,9 @@ export class NovoComponent extends FormBaseComponent implements OnInit {
 
   trocarValidacaoDocumento() {
     if (this.tipoFornecedorForm()?.value === "1") {
-      this.documento()?.clearValidators();
-      this.documento()?.setValidators([Validators.required]);
-      this.textoDocumento = "CPF (requerido)";
+      this.documento()?.clearValidators(); //limpa as validacoes para um campo no caso, o campo documento
+      this.documento()?.setValidators([Validators.required]); //seta validacao para um campo
+      this.textoDocumento = "CPF (requerido)"; // placeholder do campo
     }
     else {
       this.documento()?.clearValidators();
