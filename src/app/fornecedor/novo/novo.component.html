@@ -43,6 +43,7 @@
               placeholder="{{ textoDocumento }}"
               formControlName="documento"
               [ngClass]="{ 'is-invalid': displayMessage['documento'] }"
+              mask="000.000.000-99"
             />
 
             <span class="text-danger" *ngIf="displayMessage['documento']">
@@ -53,6 +54,7 @@
 
         <div class="form-group">
           <label class="control-label" for="TipoFornecedor">Tipo</label><br />
+          <!--Apenas alterar o valor e formControlname tem que ser o mesmo -->
           <input
             type="radio"
             value="1"
@@ -87,6 +89,7 @@
 
         <h4>Endereço</h4>
         <hr />
+        <!--Pertence ao formGroupName de endereco-->
         <div formGroupName="endereco">
           <div class="form-group">
             <label class="control-label">CEP</label>

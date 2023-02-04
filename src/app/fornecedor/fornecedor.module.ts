@@ -1,5 +1,5 @@
 import { NgxSpinnerModule } from "ngx-spinner";
-import { provideEnvironmentNgxMask } from 'ngx-mask';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from "ngx-mask";
 
 import { FornecedorAppComponent } from './fornecedor.component';
 import { NgModule } from '@angular/core';
@@ -14,7 +14,6 @@ import { ListaComponent } from "./lista/lista.component";
 import { EditarComponent } from "./editar/editar.component";
 import { ExcluirComponent } from "./excluir/excluir.component";
 import { DetalhesComponent } from "./detalhes/detalhes.component";
-
 
 @NgModule({
   declarations: [
@@ -31,12 +30,14 @@ import { DetalhesComponent } from "./detalhes/detalhes.component";
     FormsModule, // Para cadastro de formulario
     ReactiveFormsModule, // Para cadastro de formulario reativos
     NgxSpinnerModule, //pacote para usar o spinner
+    NgxMaskDirective,
+    NgxMaskPipe,
   ],
   providers: [
     FornecedorService, //servico para fornecedor
     FornecedorGuard, //guarda de rotas do fornecedor
     FornecedorResolve, // resolver para obter o id da url
-    provideEnvironmentNgxMask(), //pacote de mascaras para o uso no html
+    provideNgxMask(),//pacote de mascaras para o uso no html
   ]
 })
 export class FornecedorModule { }

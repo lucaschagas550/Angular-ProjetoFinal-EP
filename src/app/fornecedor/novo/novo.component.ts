@@ -73,6 +73,7 @@ export class NovoComponent extends FormBaseComponent implements OnInit {
       ativo: ['', [Validators.required]],
       tipoFornecedor: ['', [Validators.required]],
 
+      //Por endereco ser uma outra entidade, fica separado alinhada
       endereco: this.fb.group({
         logradouro: ['', [Validators.required]],
         numero: ['', [Validators.required]],
@@ -84,6 +85,7 @@ export class NovoComponent extends FormBaseComponent implements OnInit {
       })
     });
 
+    //seta um valor de inicio para o formulario onde tipofornecedor esta eh 1 e ativo eh true
     this.fornecedorForm.patchValue({ tipoFornecedor: '1', ativo: true });
   }
 
