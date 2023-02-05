@@ -124,7 +124,6 @@ export class NovoComponent extends FormBaseComponent implements OnInit {
 
   buscarCep(cep: string) {
 
-
     cep = StringUtils.somenteNumeros(cep);
     if (cep.length < 8) return;
 

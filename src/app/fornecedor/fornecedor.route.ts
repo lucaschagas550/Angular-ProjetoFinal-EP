@@ -26,7 +26,7 @@ const fornecedorRouterConfig: Routes = [
                 canActivate: [FornecedorGuard],
                 data: [{ claim: { nome: 'Fornecedor', valor: 'Atualizar' } }],
                 resolve: {
-                    fornecedor: FornecedorResolve
+                    fornecedor: FornecedorResolve //snapshot nome tem que ser fornecedor no momento de recuperar
                 }
             },
             {
