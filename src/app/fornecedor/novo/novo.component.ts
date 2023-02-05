@@ -124,18 +124,24 @@ export class NovoComponent extends FormBaseComponent implements OnInit {
 
   buscarCep(cep: string) {
 
+
     cep = StringUtils.somenteNumeros(cep);
     if (cep.length < 8) return;
 
     this.fornecedorService.consultarCep(cep)
       .subscribe({
-        next: (cepRetorno) => { this.preencherEnderecoConsulta(cepRetorno) },
-        error: (falha) => { this.errors.push(falha) }
+        next: (cepRetorno) => {
+          this.preencherEnderecoConsulta(cepRetorno)
+        },
+        error: (falha) => {
+          this.errors.push(falha)
+        }
       });
   }
 
   preencherEnderecoConsulta(cepConsulta: CepConsulta) {
 
+    //preencher valor de um propriedade que eh uma entidade com pathValue
     this.fornecedorForm.patchValue({
       endereco: {
         logradouro: cepConsulta.logradouro,
@@ -150,6 +156,7 @@ export class NovoComponent extends FormBaseComponent implements OnInit {
   adicionarFornecedor() {
     if (this.fornecedorForm.dirty && this.fornecedorForm.valid) {
 
+      //mapeando os valores para um objeto do tipo fornecedor com valores do formulario {objeto}, tipo, dados
       this.fornecedor = Object.assign({}, this.fornecedor, this.fornecedorForm.value);
       this.formResult = JSON.stringify(this.fornecedor);
 

@@ -16,12 +16,22 @@ export abstract class BaseService {
         };
     }
 
+    protected ObterAuthHeaderJson() {
+        return {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.LocalStorage.obterTokenUsuario()}`
+            })
+        };
+    }
+
     protected extractData(response: any): any {
         return response.data || {};
     }
 
     protected serviceError(response: Response | any) {
         let customError: string[] = [];
+        console.log(response);
 
         if (response instanceof HttpErrorResponse) {
 
