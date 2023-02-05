@@ -36,8 +36,11 @@ export class FornecedorService extends BaseService {
   }
 
   atualizarFornecedor(fornecedor: Fornecedor): Observable<Fornecedor> {
-    return new Observable<Fornecedor>();
-
+    return this.http
+      .put(this.UrlServiceV1 + "fornecedores/" + fornecedor.id, fornecedor, super.ObterAuthHeaderJson())
+      .pipe(
+        map(super.extractData),
+        catchError(super.serviceError));
   }
 
   excluirFornecedor(id: string): Observable<Fornecedor> {
@@ -46,8 +49,11 @@ export class FornecedorService extends BaseService {
   }
 
   atualizarEndereco(endereco: Endereco): Observable<Endereco> {
-    return new Observable<Endereco>();
-
+    return this.http
+      .put(this.UrlServiceV1 + "fornecedores/endereco/" + endereco.id, endereco, super.ObterAuthHeaderJson())
+      .pipe(
+        map(super.extractData),
+        catchError(super.serviceError));
   }
 
   consultarCep(cep: string): Observable<CepConsulta> {

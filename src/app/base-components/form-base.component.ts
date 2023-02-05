@@ -33,4 +33,9 @@ export abstract class FormBaseComponent {
         this.displayMessage = this.genericValidator.processarMensagens(formGroup);
         this.mudancasNaoSalvas = true;
     }
+
+    protected validarFormularioSubmit(formGroup: FormGroup) {
+        this.displayMessage = this.genericValidator.processarMensagensSubmit(formGroup);
+        this.mudancasNaoSalvas = true;
+    }
 }

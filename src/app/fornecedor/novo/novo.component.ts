@@ -169,6 +169,8 @@ export class NovoComponent extends FormBaseComponent implements OnInit {
           next: (sucesso) => { this.processarSucesso(sucesso) },
           error: (falha) => { this.processarFalha(falha) }
         });
+    } else {
+      this.validarFormularioSubmit(this.fornecedorForm);
     }
   }
 

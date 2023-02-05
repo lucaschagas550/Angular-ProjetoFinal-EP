@@ -28,6 +28,33 @@ export class GenericValidator {
         }
         return messages;
     }
+
+    //Para caso submeter sem preencher campos, exibir erros
+    processarMensagensSubmit(container: FormGroup): { [key: string]: number } {
+        let messages: any = {};
+        for (let controlKey in container.controls) {
+            if (container.controls.hasOwnProperty(controlKey)) {
+                let c = container.controls[controlKey];
+
+                if (c instanceof FormGroup) {
+                    let childMessages = this.processarMensagensSubmit(c);
+                    Object.assign(messages, childMessages);
+                } else {
+                    if (this.validationMessages[controlKey]) {
+                        messages[controlKey] = '';
+                        if (c.errors) {
+                            Object.keys(c.errors).map(messageKey => {
+                                if (this.validationMessages[controlKey][messageKey]) {
+                                    messages[controlKey] += this.validationMessages[controlKey][messageKey] + '<br />';
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        }
+        return messages;
+    }
 }
 
 export interface DisplayMessage {
