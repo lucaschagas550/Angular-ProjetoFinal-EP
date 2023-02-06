@@ -15,7 +15,8 @@ export class DetalhesComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private sanitizer: DomSanitizer) {
+    private sanitizer: DomSanitizer// Para nao barrar a url do google,o Angular nao confia na url que esta sendo setada
+  ) {
 
     this.fornecedor = this.route.snapshot.data['fornecedor'];
     this.enderecoMap = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.google.com/maps/embed/v1/place?q=" + this.EnderecoCompleto() + "&key=AIzaSyAP0WKpL7uTRHGKWyakgQXbW6FUhrrA5pE");
