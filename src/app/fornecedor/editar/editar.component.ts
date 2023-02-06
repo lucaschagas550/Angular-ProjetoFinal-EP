@@ -83,6 +83,7 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
 
   ngOnInit() {
 
+    //Spinner init
     this.spinner.show();
 
     this.fornecedorForm = this.fb.group({
@@ -107,6 +108,7 @@ export class EditarComponent extends FormBaseComponent implements OnInit {
 
     this.preencherForm();
 
+    //Spinner sendo forcado a aparecer com timeout
     setTimeout(() => {
       this.spinner.hide();
     }, 1000);
