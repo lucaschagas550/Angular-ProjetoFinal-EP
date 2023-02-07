@@ -8,13 +8,16 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MenuLoginComponent } from './menu-login/menu-login.component';
+import { AcessoNegadoComponent } from './acesso-negado/acesso-negado.component';
+
 @NgModule({
   declarations: [
     FooterComponent,
     HomeComponent,
     MenuComponent,
-    NotFoundComponent,
     MenuLoginComponent,
+    AcessoNegadoComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +28,7 @@ import { MenuLoginComponent } from './menu-login/menu-login.component';
     FooterComponent,
     HomeComponent,
     MenuComponent,
+    AcessoNegadoComponent,
     NotFoundComponent,
   ],
 })

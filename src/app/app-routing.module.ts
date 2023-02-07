@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AcessoNegadoComponent } from './navegacao/acesso-negado/acesso-negado.component';
 import { HomeComponent } from './navegacao/home/home.component';
 import { NotFoundComponent } from './navegacao/not-found/not-found.component';
 
@@ -25,6 +26,10 @@ const routes: Routes = [
   },
 
 
+  {//Rota para acesso negado a algum recurso
+    path: 'acesso-negado',
+    component: AcessoNegadoComponent
+  },
   {//Rota exclusiva
     path: 'nao-encontrado',
     component: NotFoundComponent

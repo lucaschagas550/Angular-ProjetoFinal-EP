@@ -8,7 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavegacaoModule } from './navegacao/navegacao.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ErrorInterceptor } from './services/error.handler.service';
+
+//Interceptor vai ser passado para classe ErrorInterceptor que eh o error.handler.service
+export const httpInterceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+];
 
 @NgModule({
   declarations: [
@@ -22,8 +28,11 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule, // modulo de animacao utilizado pelo Toastr
     ToastrModule.forRoot(), // Toastr exibe mensagem ao usuario na tela, pela aplicacao toda por isso esta sendo resolvido neste modulo
     HttpClientModule, //modulo para utilzar requisicao http
+
   ],
-  providers: [],
+  providers: [
+    httpInterceptorProviders //Interceptor de request
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
