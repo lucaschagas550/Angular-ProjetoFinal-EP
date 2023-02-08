@@ -14,8 +14,8 @@ export class LocalStorageUtils {
     }
 
     public limparDadosLocaisUsuario() {
-        localStorage.removeItem('devio.token');
-        localStorage.removeItem('devio.user');
+        localStorage.removeItem('devio.token'); //nome da chave do token em localstorage
+        localStorage.removeItem('devio.user'); //nome da chave do user em localstorage
     }
 
     public obterTokenUsuario(): string {

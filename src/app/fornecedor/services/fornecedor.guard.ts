@@ -10,6 +10,7 @@ export class FornecedorGuard extends BaseGuard implements CanActivate, CanDeacti
 
   constructor(protected override router: Router) { super(router); }
 
+  //Ao sair da rota
   canDeactivate(component: NovoComponent) {
     if (component.mudancasNaoSalvas) {
       return window.confirm('Tem certeza que deseja abandonar o preenchimento do formulario?');
@@ -17,9 +18,8 @@ export class FornecedorGuard extends BaseGuard implements CanActivate, CanDeacti
     return true
   }
 
+  //Ao entrar na rota
   canActivate(routeAc: ActivatedRouteSnapshot) {
-    // return super.validarClaims(routeAc);
-    return true;
+    return super.validarClaims(routeAc);
   }
-
 }

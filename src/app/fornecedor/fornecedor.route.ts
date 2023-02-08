@@ -19,7 +19,7 @@ const fornecedorRouterConfig: Routes = [
                 path: 'adicionar-novo', component: NovoComponent,
                 canDeactivate: [FornecedorGuard],
                 canActivate: [FornecedorGuard],
-                data: [{ claim: { nome: 'Fornecedor', valor: 'Adicionar' } }]
+                data: [{ claim: { nome: 'Fornecedor', valor: 'Adicionar' } }] //Cria um objeto com dados que eh exigido para o acesso
             },
             {
                 path: 'editar/:id', component: EditarComponent,

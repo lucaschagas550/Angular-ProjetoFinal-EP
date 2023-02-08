@@ -20,6 +20,7 @@ export class ContaGuard implements CanActivate, CanDeactivate<CadastroComponent>
     return true
   }
 
+  //Ao entrar na rota
   // Verificar se o usuario esta logado, nao podera entrar em um rota e sera redirecionado, se nao estiver logado pode entrar
   canActivate(): boolean {
     if (this.localStorageUtils.obterTokenUsuario()) {

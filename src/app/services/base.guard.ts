@@ -17,10 +17,11 @@ export abstract class BaseGuard {
 
         let claim: any = routeAc.data[0];
         if (claim !== undefined) {
-            let claim = routeAc.data[0]['claim'];
+            let claim = routeAc.data[0]['claim']; //obtem a chave claim da posicao 0
+            console.log(claim);
 
-            if (claim) {
-                if (!user.claims) {
+            if (claim) { //rota tem claims
+                if (!user.claims) { //usuario tem alguma claims
                     this.navegarAcessoNegado();
                 }
 
@@ -32,6 +33,7 @@ export abstract class BaseGuard {
 
                 let valoresClaim = userClaims.value as string;
 
+                //include eh funciona como um contains
                 if (!valoresClaim.includes(claim.valor)) {
                     this.navegarAcessoNegado();
                 }
