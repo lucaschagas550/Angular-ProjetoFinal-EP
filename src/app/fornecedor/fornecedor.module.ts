@@ -30,8 +30,8 @@ import { DetalhesComponent } from "./detalhes/detalhes.component";
     FormsModule, // Para cadastro de formulario
     ReactiveFormsModule, // Para cadastro de formulario reativos
     NgxSpinnerModule, //pacote para usar o spinner
-    NgxMaskDirective,
-    NgxMaskPipe,
+    NgxMaskDirective,// Para utilizar mascara 
+    NgxMaskPipe, // Para utilizar mascara 
   ],
   providers: [
     FornecedorService, //servico para fornecedor
