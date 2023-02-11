@@ -174,7 +174,8 @@
     </div>
   </form>
 
-  <!-- <lista-produto [produtos]="fornecedor.produtos"></lista-produto> -->
+  <!--[produtos] eh o input, que ira receber uma lista de produtos-->
+  <lista-produto [produtos]="fornecedor.produtos"></lista-produto>
 
   <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
