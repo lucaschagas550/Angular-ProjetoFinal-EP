@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Observable, fromEvent, merge } from 'rxjs';
 
 import { ToastrService } from 'ngx-toastr';
-import { ImageCroppedEvent, ImageTransform, Dimensions } from 'ngx-image-cropper';
+import { ImageCroppedEvent, ImageTransform, Dimensions } from 'ngx-image-cropper'; //Para o pacote de imagens
 
 import { ProdutoService } from '../services/produto.service';
 import { CurrencyUtils } from 'src/app/utils/currency-utils';
@@ -20,14 +20,14 @@ export class NovoComponent extends ProdutoBaseComponent implements OnInit {
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[] = [];
 
-  imageChangedEvent: any = '';
-  croppedImage: any = '';
-  canvasRotation = 0;
-  rotation = 0;
-  scale = 1;
-  showCropper = false;
-  containWithinAspectRatio = false;
-  transform: ImageTransform = {};
+  imageChangedEvent: any = ''; // quando imagem eh alterado
+  croppedImage: any = ''; // resto da imagem depois do recorte
+  canvasRotation = 0; //rotacao
+  rotation = 0; // rotacao
+  scale = 1; //escala
+  showCropper = false; //mostra a parte do recorte
+  containWithinAspectRatio = false; // manter o arquivo com as dimensoes tradicionais
+  transform: ImageTransform = {}; //transformacao de imagem
   imageURL!: string;
   imagemNome!: string;
 
