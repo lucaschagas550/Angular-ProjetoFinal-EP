@@ -3,11 +3,13 @@ import { FormBuilder, Validators, FormControlName } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
+import { Buffer } from 'buffer'; //buffer para codificar em base64
 
 import { ProdutoService } from '../services/produto.service';
 import { environment } from 'src/environments/environment';
 import { CurrencyUtils } from 'src/app/utils/currency-utils';
 import { ProdutoBaseComponent } from '../produto-form.base.component';
+
 
 @Component({
   selector: 'app-editar',
@@ -104,6 +106,7 @@ export class EditarComponent extends ProdutoBaseComponent implements OnInit {
     this.toastr.error('Ocorreu um erro!', 'Opa :(');
   }
 
+  //upload de imagem com base64 para api
   upload(file: any) {
     this.imagemNome = file[0].name;
 
@@ -114,7 +117,10 @@ export class EditarComponent extends ProdutoBaseComponent implements OnInit {
 
   manipularReader(readerEvt: any) {
     var binaryString = readerEvt.target.result;
-    this.imageBase64 = btoa(binaryString);
+
+    //this.imageBase64 = btoa(binaryString); //depreciado
+
+    this.imageBase64 = Buffer.from(binaryString, 'binary').toString('base64');
     this.imagemPreview = "data:image/jpeg;base64," + this.imageBase64;
   }
 }
