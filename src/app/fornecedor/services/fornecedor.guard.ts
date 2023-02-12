@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanDeactivate, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanDeactivate, Router, RouterStateSnapshot } from '@angular/router';
 import { BaseGuard } from 'src/app/services/base.guard';
 import { NovoComponent } from '../novo/novo.component';
 
@@ -19,7 +19,9 @@ export class FornecedorGuard extends BaseGuard implements CanActivate, CanDeacti
   }
 
   //Ao entrar na rota
+  //add state: RouterStateSnapshot em parametro 
   canActivate(routeAc: ActivatedRouteSnapshot) {
+    // e entao enviar o state para usar o state.url, para obter a ultima rota acessada, seria uma outra forma, em vez do queryparameter
     return super.validarClaims(routeAc);
   }
 }
