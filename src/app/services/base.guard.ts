@@ -10,7 +10,7 @@ export abstract class BaseGuard {
     protected validarClaims(routeAc: ActivatedRouteSnapshot): boolean {
 
         if (!this.localStorageUtils.obterTokenUsuario()) {
-            this.router.navigate(['/conta/login/'], { queryParams: { returnUrl: this.router.url } });
+            this.router.navigate(['/conta/login/'], { queryParams: { returnUrl: this.router.url } }); //obtem rota antes do redirecinamento e a aguarda para depois retornar
         }
 
         let user = this.localStorageUtils.obterUsuario();

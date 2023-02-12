@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
 import { FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { fromEvent, merge, Observable } from 'rxjs';
 
@@ -28,9 +28,12 @@ export class LoginComponent {
   genericValidator!: GenericValidator;
   displayMessage: DisplayMessage = {};
 
+  returnUrl!: string;
+
   constructor(
     private fb: FormBuilder,
     private contaService: ContaService,
+    private route: ActivatedRoute, //Obter o valor do queryparam que tem url de retorno se acessado por redirecionamento
     private router: Router,
     private toastr: ToastrService,) {
 
@@ -44,6 +47,8 @@ export class LoginComponent {
         rangeLength: 'A senha deve possuir entre 6 e 15 caracteres'
       }
     };
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl']; //obtem queryparam
 
     this.genericValidator = new GenericValidator(this.validationMessages);
   }
@@ -90,7 +95,9 @@ export class LoginComponent {
 
     if (toast) {
       toast.onHidden.subscribe(() => {
-        this.router.navigate(['/home']);
+        this.returnUrl
+          ? this.router.navigate([this.returnUrl])
+          : this.router.navigate(['/home']);
       })
     }
   }

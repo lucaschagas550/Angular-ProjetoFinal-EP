@@ -26,7 +26,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
                 if (error.status === 401) {
                     this.localStorageUtil.limparDadosLocaisUsuario();
-                    this.router.navigate(['/conta/login'], { queryParams: { returnUrl: this.router.url } });
+                    this.router.navigate(['/conta/login'], { queryParams: { returnUrl: this.router.url } }); // salva no query param, a url para retornar depois de realizar login
                 }
                 if (error.status === 403) {
                     this.router.navigate(['/acesso-negado']);
