@@ -9,7 +9,7 @@ export abstract class ProdutoBaseComponent extends FormBaseComponent {
     produto!: Produto;
     fornecedores!: Fornecedor[];
     errors: any[] = [];
-    produtoForm!: FormGroup;
+    produtoForm!: FormGroup; // FormGroup para model e validar os campo do formulario
 
     constructor() {
         super();

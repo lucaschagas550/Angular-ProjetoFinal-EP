@@ -18,6 +18,7 @@ import { ProdutoBaseComponent } from '../produto-form.base.component';
 })
 export class NovoComponent extends ProdutoBaseComponent implements OnInit {
 
+  //Obtem todos dados do DOM(HTML)
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[] = [];
 
   imageChangedEvent: any = ''; // quando imagem eh alterado
