@@ -15,13 +15,13 @@ WORKDIR /app
 COPY package.json /app 
 
 ## Para instalar dependencias do pacjage.json
-RUN npm-install
+RUN npm install --force
 
 ## Copiar todo o projeto para pasta app
 COPY . /app/
 
 ## Comando do tipo npm, para build em prod
-RUN $(npm bin)/ng build --prod
+RUN $(npm bin)/ng build --configuration production
 
 
 ### Estagio 2 - Subir o source para o servidor NGINGX com o app Angular ###
