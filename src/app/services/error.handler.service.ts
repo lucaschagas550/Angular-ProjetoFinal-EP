@@ -23,16 +23,20 @@ export class ErrorInterceptor implements HttpInterceptor {
         return next.handle(req).pipe(catchError(error => {
 
             if (error instanceof HttpErrorResponse) {
+                console.log("erro" + error);
 
                 if (error.status === 401) {
                     this.localStorageUtil.limparDadosLocaisUsuario();
                     this.router.navigate(['/conta/login'], { queryParams: { returnUrl: this.router.url } }); // salva no query param, a url para retornar depois de realizar login
                 }
                 if (error.status === 403) {
+                    console.log("entrou aqui");
                     this.router.navigate(['/acesso-negado']);
                 }
             }
 
+            console.log("intercept" + error);
+            console.dir(error);
             return throwError(() => error);
         }));
     }
